@@ -15,6 +15,23 @@ pip3 install git+https://github.com/fraglab/nameko-opentsdb-py.git
 
 ## Usage
 
+## Configuration
+
+Simple add next section to nameko config:
+```yaml
+...
+TSDB_CONFIG:
+  OPTIONS:
+    host: 'opentsdb'
+    port: 4242
+    host_tag: True
+  STATIC_TAGS:
+    service: profiles_service
+...
+```
+OPTIONS - it is TSDBClient arguments
+STATIC_TAGS - it is free list of static tags which add to each metric
+
 ## Use with dependency providers
 
 SharedOpenTSDB - use OpenTSDB with dependency providers.
@@ -49,7 +66,6 @@ class Service:
     tsdb = OpenTSDB()
 
 ```
-
 
 ## Example:
 ```python
