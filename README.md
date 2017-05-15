@@ -29,8 +29,8 @@ TSDB_CONFIG:
     service: profiles_service
 ...
 ```
-OPTIONS - it is TSDBClient arguments
-STATIC_TAGS - it is free list of static tags which add to each metric
+* OPTIONS - it is TSDBClient arguments.
+* STATIC_TAGS - it is free list of static tags which add to each metric.
 
 ## Use with dependency providers
 
