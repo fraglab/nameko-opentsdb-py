@@ -10,9 +10,11 @@ __all__ = ['SharedOpenTSDB', 'OpenTSDBBasic', 'OpenTSDB']
 class SharedOpenTSDB(ProviderCollector, SharedExtension):
     OPEN_TSDB_CONFIG_KEY = 'TSDB_CONFIG'
 
+    metrics = {}
+
     def __init__(self, **metrics):
         super(SharedOpenTSDB, self).__init__()
-        self.metrics = metrics
+        self.metrics.update(metrics)
         self._client = None
 
     def get_client(self) -> TSDBClient:
@@ -57,7 +59,7 @@ class OpenTSDB(OpenTSDBBasic):
     NAMEKO_RPC_METRICS = {
         'NAMEKO_RPC_CALL_SUCCESS': Counter('nameko.rpc_call.success', ['method']),
         'NAMEKO_RPC_CALL_FAILED': Counter('nameko.rpc_call.failed', ['method']),
-        'NAMEKO_RPC_EXECUTE_TIME': Gauge('nameko.rpc_call.execute_time_milliseconds', ['method'])
+        'NAMEKO_RPC_EXECUTE_TIME': Gauge('nameko.rpc_call.execute_time_ms', ['method'])
     }
 
     def __init__(self, **metrics):
